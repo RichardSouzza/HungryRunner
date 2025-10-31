@@ -14,6 +14,10 @@ config/name="Hungry Runner"
 run/main_scene="uid://b54bkky74s35b"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
 [input]
 
 jump={

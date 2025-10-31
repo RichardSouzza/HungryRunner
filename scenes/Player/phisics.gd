@@ -1,21 +1,28 @@
 extends CharacterBody2D
 
-var run_speed = 350
-var jump_speed = -1000
+@onready var animation = $AnimatedSprite2D
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var RUN_SPEED = 400
+var JUMP_SPEED = -800
+
+var gravity = 2600
+
+func _physics_process(delta):
+    if not is_on_floor():
+        animation.play("jump")
+        velocity.y += gravity * delta
+    else:
+        animation.play("run")
+
+    get_input()
+    move_and_slide()
 
 func get_input():
     velocity.x = 0
-    var jump = Input.is_action_just_pressed('jump')
 
-    if is_on_floor() and jump:
-        $AnimatedSprite2D.animation = "jump"
-        velocity.y = jump_speed
+    if Input.is_action_just_pressed("jump"):
+        if is_on_floor():
+            print("Jumping!")
+            velocity.y = JUMP_SPEED
 
-    velocity.x = run_speed
-
-func _physics_process(delta):
-    velocity.y += gravity * delta
-    get_input()
-    move_and_slide()
+    velocity.x = RUN_SPEED

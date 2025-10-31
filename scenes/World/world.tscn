@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b54bkky74s35b"]
+[gd_scene load_steps=4 format=3 uid="uid://b54bkky74s35b"]
 
 [ext_resource type="Script" uid="uid://cqggiu271cupk" path="res://scenes/World/spawner.gd" id="1_807wd"]
 [ext_resource type="PackedScene" uid="uid://biu4yfwjx4qv4" path="res://scenes/Player/player.tscn" id="2_bhb7g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_807wd"]
+size = Vector2(3848.5, 72.5)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_807wd")
 
 [node name="Player" parent="." instance=ExtResource("2_bhb7g")]
-position = Vector2(320, -40)
+position = Vector2(576, -27)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-rotation = -0.2617994
-offset = Vector2(500, 0)
-zoom = Vector2(0.7, 0.7)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(100000, 37)
+scale = Vector2(1000, 1)
+shape = SubResource("RectangleShape2D_807wd")

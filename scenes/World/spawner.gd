@@ -1,9 +1,9 @@
 extends Node2D
 
 @onready var chunk_scene = preload("res://scenes/Chunk/chunk.tscn")
-@export var chunk_width := 151 * 16 # tile size * chunk length
+@export var chunk_width := 140 * 16 # tile size * chunk length
 @export var initial_chunks := 3
-@export var player_path := NodePath("Player")
+@export var player_path := NodePath("Player/CharacterBody2D")
 
 var last_chunk_end_x := 0
 var player: Node2D
@@ -14,6 +14,8 @@ func _ready():
         add_chunk()
 
 func _process(_delta):
+    print(player.position.x)
+    print(last_chunk_end_x - (chunk_width * 2))
     if player.position.x > last_chunk_end_x - (chunk_width * 2):
         add_chunk()
 
