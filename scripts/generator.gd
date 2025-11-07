@@ -1,6 +1,6 @@
 extends TileMapLayer
 
-@export var chunk_length := 26
+@export var chunk_length := 2000
 @export var ground_y := 0
 
 var atlas_tiles = [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0)]

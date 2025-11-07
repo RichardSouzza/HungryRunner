@@ -8,6 +8,7 @@ var JUMP_SPEED = -800
 var gravity = 2600
 
 func _physics_process(delta):
+    move_and_slide()
     if not is_on_floor():
         animation.play("jump")
         velocity.y += gravity * delta
@@ -15,7 +16,6 @@ func _physics_process(delta):
         animation.play("run")
 
     get_input()
-    move_and_slide()
 
 func get_input():
     velocity.x = 0

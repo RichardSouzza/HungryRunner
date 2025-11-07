@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://b54bkky74s35b"]
+
+[ext_resource type="Texture2D" uid="uid://blipax65oekdy" path="res://assets/sprites/ground/ground.png" id="2_bhb7g"]
+[ext_resource type="Script" uid="uid://cxowwtrq2ofen" path="res://scripts/generator.gd" id="3_56o5f"]
+[ext_resource type="PackedScene" uid="uid://de4sb3extm786" path="res://scenes/player.tscn" id="4_56o5f"]
+[ext_resource type="Script" uid="uid://cq36xab5matml" path="res://scripts/phisics.gd" id="5_71j4m"]
+[ext_resource type="Texture2D" uid="uid://bl6mods6bli3o" path="res://assets/sprites/scenary/background.png" id="6_qfnet"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7602k"]
+texture = ExtResource("2_bhb7g")
+texture_region_size = Vector2i(151, 151)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-75.5, -75.5, 75.5, -75.5, 75.5, 75.5, -75.5, 75.5)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-75.5, -75.5, 75.5, -75.5, 75.5, 75.5, -75.5, 75.5)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-75.5, -75.5, 75.5, -75.5, 75.5, 75.5, -75.5, 75.5)
+
+[sub_resource type="TileSet" id="TileSet_inth5"]
+tile_size = Vector2i(151, 151)
+uv_clipping = true
+physics_layer_0/collision_layer = 255
+sources/0 = SubResource("TileSetAtlasSource_7602k")
+tile_proxies/coords_level = [[1, Vector2i(0, 0)], [4, Vector2i(0, 0)], [2, Vector2i(0, 0)], [4, Vector2i(1, 0)], [3, Vector2i(0, 0)], [4, Vector2i(2, 0)]]
+
+[node name="World" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+tile_set = SubResource("TileSet_inth5")
+script = ExtResource("3_56o5f")
+
+[node name="Player" parent="." instance=ExtResource("4_56o5f")]
+position = Vector2(376, -25)
+script = ExtResource("5_71j4m")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+offset = Vector2(200, -40)
+limit_smoothed = true
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+show_behind_parent = true
+position = Vector2(411, -105)
+texture = ExtResource("6_qfnet")
