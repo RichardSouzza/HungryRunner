@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cxowwtrq2ofen" path="res://scripts/generator.gd" id="3_56o5f"]
 [ext_resource type="PackedScene" uid="uid://de4sb3extm786" path="res://scenes/player.tscn" id="4_56o5f"]
 [ext_resource type="Script" uid="uid://cq36xab5matml" path="res://scripts/phisics.gd" id="5_71j4m"]
-[ext_resource type="Texture2D" uid="uid://bl6mods6bli3o" path="res://assets/sprites/scenary/background.png" id="6_qfnet"]
+[ext_resource type="PackedScene" uid="uid://ch3h8h1sl4ivm" path="res://scenes/background.tscn" id="6_i7141"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7602k"]
 texture = ExtResource("2_bhb7g")
@@ -26,11 +26,13 @@ tile_proxies/coords_level = [[1, Vector2i(0, 0)], [4, Vector2i(0, 0)], [2, Vecto
 [node name="World" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+top_level = true
 scale = Vector2(0.5, 0.5)
 tile_set = SubResource("TileSet_inth5")
 script = ExtResource("3_56o5f")
 
 [node name="Player" parent="." instance=ExtResource("4_56o5f")]
+top_level = true
 position = Vector2(376, -25)
 script = ExtResource("5_71j4m")
 
@@ -38,8 +40,5 @@ script = ExtResource("5_71j4m")
 offset = Vector2(200, -40)
 limit_smoothed = true
 
-[node name="Background" type="Sprite2D" parent="."]
-visible = false
-show_behind_parent = true
-position = Vector2(411, -105)
-texture = ExtResource("6_qfnet")
+[node name="Background" parent="." instance=ExtResource("6_i7141")]
+position = Vector2(817, -462)
